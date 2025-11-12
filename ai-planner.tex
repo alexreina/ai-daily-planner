@@ -1,0 +1,172 @@
+% !TEX program = xelatex
+\documentclass[12pt]{article}
+
+% ---------- Packages ----------
+\usepackage[paperwidth=6in,paperheight=9in,top=0.8in,bottom=0.8in,inner=0.9in,outer=0.7in]{geometry}
+% Inner margin slightly larger for binding (perfect bound KDP)
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{array,tabularx,booktabs}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{ifthen}
+
+% ---------- Fonts ----------
+\setmainfont{Lato}
+% If Lato is unavailable, uncomment one:
+% \setmainfont{TeX Gyre Heros}
+% \setmainfont{TeX Gyre Schola}
+
+% ---------- Colours ----------
+\definecolor{Accent}{HTML}{1E64B7}  % calm blue
+\definecolor{Rule}{gray}{0.70}      % handwriting rule
+\definecolor{LightRule}{gray}{0.85} % table hairlines / subtle rules
+
+% ---------- Section styling ----------
+\titleformat{\section}{\large\bfseries\color{Accent}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{0.6em}{0.45em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Handwriting rules (about 7 mm spacing on 6x9) ----------
+\newcommand{\HandLine}{%
+  \par\noindent\color{Rule}\rule{\linewidth}{0.6pt}\par\vspace{6mm}
+}
+\newcommand{\HandLines}[1]{\begingroup
+  \count0=0\loop\ifnum\count0<#1 \advance\count0 by 1 \HandLine \repeat
+\endgroup}
+
+% ---------- Small helpers ----------
+\newcommand{\Pills}{\textbf{$\square$ Focused \quad $\square$ Energised \quad $\square$ Creative \quad $\square$ Grounded}}
+\newcommand{\EnergyCells}{\mbox{$\square\ \square\ \square\ \square\ \square$}}
+\newcommand{\MoodRow}{\Large \mbox{😴\quad 😐\quad 🙂\quad 😀\quad 🔥}}
+\newcommand{\Caption}[2]{\textbf{#1}\par\small\itshape\color{gray} #2\par\normalsize\color{black}\vspace{0.5em}}
+
+% Table spacing defaults
+\renewcommand{\arraystretch}{1.6}
+\setlength{\tabcolsep}{6pt}
+
+% ---------- Action grid row ----------
+\newcommand{\ActionRow}[1]{%
+  #1 & \rule{0.85\linewidth}{0.6pt} & \centering \EnergyCells & \centering $\square$ \tabularnewline
+}
+
+% ---------- WEEKLY PAGE MACRO ----------
+% \WeeklyPage{Week Label}{Theme}{QR/URL optional (can be blank)}
+\newcommand{\WeeklyPage}[3]{%
+{\centering
+  \LARGE\bfseries #1 \par
+  \small\itshape #2\par\normalsize\vspace{0.8em}
+}
+
+\section{This week’s focus}
+\Caption{Top three goals}{Keep them outcome-based, measurable, and realistic.}
+\HandLines{3}
+
+\section{Plan the week}
+\Caption{Key projects and appointments}{Use broad strokes; details live on daily pages.}
+\HandLines{5}
+
+\section{Wellbeing check}
+\Caption{Habits to protect}{Sleep · Movement · Food · Social · No-screen blocks.}
+\HandLines{2}
+
+\section{Review last week}
+\begin{multicols}{2}
+\Caption{Wins}{What went better than expected?}
+\HandLines{3}
+\columnbreak
+\Caption{Blockers}{What kept tripping you up?}
+\HandLines{3}
+\end{multicols}
+
+\section{Notes}
+\HandLines{3}
+
+\begin{center}
+\small\color{gray}
+Optional bonus prompts: \textit{#3}
+\end{center}
+
+\newpage
+}
+
+% ---------- DAILY PAGE MACRO ----------
+% \DailyPage{Day Label}{Weekday}{(optional date string)}
+\newcommand{\DailyPage}[3]{%
+{\centering\LARGE\bfseries #1 \normalsize $\cdot$ #2\par
+\small\itshape A conversation between structure and curiosity\par\normalsize\vspace{0.8em}}
+
+% Morning Focus
+\section{Morning focus}
+\Caption{Top 3 priorities}{Keep them outcome-based, not tasks.}
+\HandLines{3}
+
+\Caption{How I want to feel today}{Tick one or more options.}
+\Pills\par\vspace{0.9em}
+
+\Caption{Mini-commitment}{If I only achieve one thing today, it will be:}
+\HandLines{1}
+
+% AI Reflection — Morning
+\section{AI reflection — morning}
+\noindent\itshape\color{gray!60} Ask your AI assistant:\par
+\noindent\bfseries\color{black} “What’s one small perspective shift that could make today’s tasks feel more meaningful?”\par
+\normalsize\itshape\color{gray!60} Jot the one idea that resonates; ignore the rest.\par\normalsize\color{black}
+\HandLines{3}
+
+% Action Grid (7am start)
+\section{Action grid}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{16mm} X >{\centering\arraybackslash}p{23mm} >{\centering\arraybackslash}p{10mm}@{}}
+\toprule
+\textbf{Time} & \textbf{Task} & \textbf{Energy} & \textbf{Done}\\
+\midrule
+\ActionRow{07–09}
+\ActionRow{09–11}
+\ActionRow{11–13}
+\ActionRow{13–15}
+\ActionRow{15–17}
+\ActionRow{17–19}
+\bottomrule
+\end{tabularx}
+
+% Evening Review
+\section{Evening review}
+\Caption{Mood check}{Circle one.}
+\MoodRow\par\vspace{0.9em}
+
+\Caption{Quick reflection}{One thing that went well · One challenge · What I’ll adjust tomorrow.}
+\HandLines{3}
+
+% AI Reflection — Evening
+\section{AI reflection — evening}
+\noindent\itshape\color{gray!60} Ask your AI:\par
+\noindent\bfseries\color{black} “What might today’s events reveal about how I handle progress and pressure?”\par
+\normalsize\itshape\color{gray!60} Write your takeaway after reading the AI’s reply.\par\normalsize\color{black}
+\HandLines{3}
+
+% Footer
+\begin{center}
+\small\color{gray} Scan this week’s QR code for 5 bonus prompts on \textit{Momentum \& Motivation}
+\end{center}
+
+\newpage
+} % end DailyPage
+
+% ---------- Document ----------
+\begin{document}
+
+% Example weekly page
+\WeeklyPage{Week 3}{Theme: Productivity \& Momentum}{yourdomain.com/prompts-week3}
+
+% Example daily pages
+\DailyPage{Day 15}{Monday}{}
+\DailyPage{Day 16}{Tuesday}{}
+\DailyPage{Day 17}{Wednesday}{}
+
+% (Duplicate \WeeklyPage + \DailyPage blocks as needed.)
+
+\end{document}
+

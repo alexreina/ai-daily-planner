@@ -42,8 +42,18 @@
 % ---------- Small helpers ----------
 \newcommand{\Pills}{\textbf{$\square$ Focused \quad $\square$ Energised \quad $\square$ Creative \quad $\square$ Grounded}}
 \newcommand{\EnergyCells}{\mbox{$\square\ \square\ \square\ \square\ \square$}}
-% Use simple ASCII smileys to avoid missing glyphs in print fonts.
-\newcommand{\MoodRow}{\Large :(\quad :/\quad :|\quad :)\quad :D}
+% Custom mood dots that render in any environment (no emoji fonts needed).
+\newcommand{\MoodDot}[1]{%
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+    \def\moodradius{0.16}
+    \pgfmathsetmacro{\fillend}{-\moodradius + 2*\moodradius*#1}
+    \path[fill=LightRule] (0,0) circle (\moodradius);
+    \clip (0,0) circle (\moodradius);
+    \path[fill=Accent] (-\moodradius,-\moodradius) rectangle (\fillend,\moodradius);
+    \draw[color=Accent,line width=0.4pt] (0,0) circle (\moodradius);
+  \end{tikzpicture}
+}
+\newcommand{\MoodRow}{\Large \MoodDot{0}\quad \MoodDot{0.25}\quad \MoodDot{0.5}\quad \MoodDot{0.75}\quad \MoodDot{1}}
 \newcommand{\Caption}[2]{\textbf{#1}\par\small\itshape\color{gray} #2\par\normalsize\color{black}\vspace{0.5em}}
 
 % Table spacing defaults

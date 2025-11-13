@@ -3,7 +3,7 @@
 
 % ---------- Packages ----------
 \usepackage{amssymb} % for \square
-\usepackage[paperwidth=148mm,paperheight=210mm,top=15mm,bottom=15mm,inner=18mm,outer=12mm]{geometry}
+\usepackage[paperwidth=148mm,paperheight=210mm,top=15mm,bottom=15mm,inner=17mm,outer=11mm]{geometry}
 % Inner margin slightly larger for binding (perfect bound KDP)
 \usepackage{fontspec}
 \usepackage{titlesec}
@@ -33,7 +33,7 @@
 
 % ---------- Handwriting rules (tightened for A5 while staying legible) ----------
 \newcommand{\HandLine}{%
-  \par\noindent\color{Rule}\rule{\linewidth}{0.6pt}\par\vspace{3mm}
+  \par\noindent\color{Rule}\rule{\linewidth}{0.6pt}\par\vspace{2.8mm}
 }
 \newcommand{\HandLines}[1]{\begingroup
   \count0=0\loop\ifnum\count0<#1 \advance\count0 by 1 \HandLine \repeat

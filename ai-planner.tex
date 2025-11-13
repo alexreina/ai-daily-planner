@@ -3,7 +3,7 @@
 
 % ---------- Packages ----------
 \usepackage{amssymb} % for \square
-\usepackage[paperwidth=6in,paperheight=9in,top=0.8in,bottom=0.8in,inner=0.9in,outer=0.7in]{geometry}
+\usepackage[paperwidth=148mm,paperheight=210mm,top=15mm,bottom=15mm,inner=18mm,outer=12mm]{geometry}
 % Inner margin slightly larger for binding (perfect bound KDP)
 \usepackage{fontspec}
 \usepackage{titlesec}
@@ -31,9 +31,9 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-% ---------- Handwriting rules (about 7 mm spacing on 6x9) ----------
+% ---------- Handwriting rules (tightened for A5 while staying legible) ----------
 \newcommand{\HandLine}{%
-  \par\noindent\color{Rule}\rule{\linewidth}{0.6pt}\par\vspace{6mm}
+  \par\noindent\color{Rule}\rule{\linewidth}{0.6pt}\par\vspace{4.5mm}
 }
 \newcommand{\HandLines}[1]{\begingroup
   \count0=0\loop\ifnum\count0<#1 \advance\count0 by 1 \HandLine \repeat
@@ -42,7 +42,7 @@
 % ---------- Small helpers ----------
 \newcommand{\Pills}{\textbf{$\square$ Focused \quad $\square$ Energised \quad $\square$ Creative \quad $\square$ Grounded}}
 \newcommand{\EnergyCells}{\mbox{$\square\ \square\ \square\ \square\ \square$}}
-\newcommand{\MoodRow}{\Large 😴\quad 😐\quad 🙂\quad 😀\quad 🔥}
+\newcommand{\MoodRow}{\Large ☹︎\quad ○\quad ◔\quad ◕\quad ●}
 \newcommand{\Caption}[2]{\textbf{#1}\par\small\itshape\color{gray} #2\par\normalsize\color{black}\vspace{0.5em}}
 
 % Table spacing defaults
@@ -170,4 +170,3 @@ Optional bonus prompts: \textit{#3}
 % (Duplicate \WeeklyPage + \DailyPage blocks as needed.)
 
 \end{document}
-

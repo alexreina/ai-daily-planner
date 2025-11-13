@@ -138,10 +138,12 @@ Optional bonus prompts: \textit{#3}
 
 % Evening Review
 \section{Evening review}
-\Caption{Mood check}{Circle one.}
-{\centering\MoodRow\par}\vspace{0.6em}
+\begin{tabularx}{\linewidth}{@{}p{25mm}X@{}}
+  \Caption{Mood check}{Circle one.} & \MoodRow \\
+\end{tabularx}
+\vspace{0.3em}
 \Caption{Quick reflection}{One thing that went well · One challenge · What I’ll adjust tomorrow.}
-\HandLines{2}\vspace{0.6em}
+\HandLines{2}\vspace{0.4em}
 
 % AI Reflection — Evening
 \section{AI reflection — evening}

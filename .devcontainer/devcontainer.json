@@ -1,0 +1,39 @@
+{
+  "name": "ai-daily-planner",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-xetex latexmk && echo 'Ready to run: latexmk -xelatex ai-planner.tex'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "latex-workshop.latex.tools": [
+          {
+            "name": "xelatex",
+            "command": "latexmk",
+            "args": [
+              "-xelatex",
+              "-interaction=nonstopmode",
+              "-halt-on-error",
+              "%DOC%"
+            ]
+          }
+        ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "XeLaTeX",
+            "tools": ["xelatex"]
+          }
+        ],
+        "latex-workshop.view.pdf.viewer": "tab"
+      }
+    }
+  }
+}
+
